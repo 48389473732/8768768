@@ -1,0 +1,232 @@
+local ShittyGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local GetCure = Instance.new("TextButton")
+local GetVirus = Instance.new("TextButton")
+local ModifyGun = Instance.new("TextButton")
+local Ragdoll = Instance.new("TextButton")
+local UnRagdoll = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+local TextLabel_3 = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local ModifyMelee = Instance.new("TextButton")
+local Frame = Instance.new("Frame")
+local Frame_2 = Instance.new("Frame")
+local Frame_3 = Instance.new("Frame")
+local Frame_4 = Instance.new("Frame")
+local openclose = Instance.new("TextButton")
+
+ShittyGui.Name = "ShittyGui"
+ShittyGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ShittyGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ShittyGui.ResetOnSpawn = false
+
+main.Name = "main"
+main.Parent = ShittyGui
+main.Active = true
+main.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.536997974, 0, 0.208659247, 0)
+main.Size = UDim2.new(0, 160, 0, 387)
+main.Visible = false
+main.Draggable = true
+
+TextLabel.Parent = main
+TextLabel.Active = true
+TextLabel.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel.BorderColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0, 0, 0.039530199, 0)
+TextLabel.Size = UDim2.new(0, 157, 0, 28)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Lab Shit"
+TextLabel.TextColor3 = Color3.fromRGB(208, 219, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 20.000
+TextLabel.TextWrapped = true
+
+GetCure.Name = "GetCure"
+GetCure.Parent = main
+GetCure.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+GetCure.BorderColor3 = Color3.fromRGB(200, 200, 200)
+GetCure.BorderSizePixel = 2
+GetCure.Position = UDim2.new(0.150000006, 0, 0.130483314, 0)
+GetCure.Size = UDim2.new(0, 111, 0, 29)
+GetCure.Font = Enum.Font.SourceSans
+GetCure.Text = "Get Cure"
+GetCure.TextColor3 = Color3.fromRGB(255, 255, 255)
+GetCure.TextSize = 16.000
+GetCure.MouseButton1Down:connect(function()
+	game:GetService("ReplicatedStorage").Events.GiveCure:FireServer()
+end)
+
+GetVirus.Name = "GetVirus"
+GetVirus.Parent = main
+GetVirus.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+GetVirus.BorderColor3 = Color3.fromRGB(200, 200, 200)
+GetVirus.BorderSizePixel = 2
+GetVirus.Position = UDim2.new(0.150000006, 0, 0.233959034, 0)
+GetVirus.Size = UDim2.new(0, 111, 0, 29)
+GetVirus.Font = Enum.Font.SourceSans
+GetVirus.Text = "Get Virus"
+GetVirus.TextColor3 = Color3.fromRGB(255, 255, 255)
+GetVirus.TextSize = 16.000
+GetVirus.MouseButton1Down:connect(function()
+	game:GetService("ReplicatedStorage").Events.GiveVirus:FireServer()
+end)
+
+ModifyGun.Name = "ModifyGun"
+ModifyGun.Parent = main
+ModifyGun.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+ModifyGun.BorderColor3 = Color3.fromRGB(200, 200, 200)
+ModifyGun.BorderSizePixel = 2
+ModifyGun.Position = UDim2.new(0.150000006, 0, 0.434763432, 0)
+ModifyGun.Size = UDim2.new(0, 111, 0, 29)
+ModifyGun.Font = Enum.Font.SourceSans
+ModifyGun.Text = "Modify Gun"
+ModifyGun.TextColor3 = Color3.fromRGB(255, 255, 255)
+ModifyGun.TextSize = 16.000
+ModifyGun.MouseButton1Down:connect(function()
+	local cockPax = game:GetService("Players").LocalPlayer.Backpack 
+
+	function modsRapeTheGun(v) 
+		if v:FindFirstChild("Setting") then 
+			local lol = require(v.Setting) 
+			lol.FireRate = 0
+			lol.Auto = true
+			lol.AmmoPerClip = 9e9 
+			lol.ReloadTime = 0
+			lol.BaseDamage = 999
+			lol.HeadshotDamageMultiplier = 999
+			lol.Spread = 0
+			lol.CameraShakingEnabled = false
+			lol.ShotgunEnabled = true
+			lol.BulletSpeed = 9e9
+		end
+	end
+
+	for _, v in next, cockPax:GetChildren() do  
+		modsRapeTheGun(v) 
+	end
+	cockPax.ChildAdded:Connect(function(v) 
+		modsRapeTheGun(v) 
+	end)
+end)
+
+Ragdoll.Name = "Ragdoll"
+Ragdoll.Parent = main
+Ragdoll.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Ragdoll.BorderColor3 = Color3.fromRGB(200, 200, 200)
+Ragdoll.BorderSizePixel = 2
+Ragdoll.Position = UDim2.new(0.150000006, 0, 0.746961415, 0)
+Ragdoll.Size = UDim2.new(0, 111, 0, 29)
+Ragdoll.Font = Enum.Font.SourceSans
+Ragdoll.Text = "Ragdoll"
+Ragdoll.TextColor3 = Color3.fromRGB(255, 255, 255)
+Ragdoll.TextSize = 16.000
+Ragdoll.MouseButton1Down:connect(function()
+	game:GetService("ReplicatedStorage").Events.RagdollState:FireServer(1)
+end)
+
+UnRagdoll.Name = "UnRagdoll"
+UnRagdoll.Parent = main
+UnRagdoll.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+UnRagdoll.BorderColor3 = Color3.fromRGB(200, 200, 200)
+UnRagdoll.BorderSizePixel = 2
+UnRagdoll.Position = UDim2.new(0.150000006, 0, 0.853050709, 0)
+UnRagdoll.Size = UDim2.new(0, 111, 0, 29)
+UnRagdoll.Font = Enum.Font.SourceSans
+UnRagdoll.Text = "UnRagdoll"
+UnRagdoll.TextColor3 = Color3.fromRGB(255, 255, 255)
+UnRagdoll.TextSize = 16.000
+UnRagdoll.MouseButton1Down:connect(function()
+	game:GetService("ReplicatedStorage").Events.RagdollState:FireServer()
+end)
+
+TextLabel_2.Parent = main
+TextLabel_2.Active = true
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel_2.BorderColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.00625000009, 0, 0.654716492, 0)
+TextLabel_2.Size = UDim2.new(0, 159, 0, 28)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Ragdoll Shit"
+TextLabel_2.TextColor3 = Color3.fromRGB(208, 219, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 20.000
+TextLabel_2.TextWrapped = true
+
+TextLabel_3.Parent = main
+TextLabel_3.Active = true
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel_3.BorderColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel_3.BorderSizePixel = 0
+TextLabel_3.Position = UDim2.new(0.00625000009, 0, 0.345504105, 0)
+TextLabel_3.Size = UDim2.new(0, 158, 0, 28)
+TextLabel_3.Font = Enum.Font.SourceSans
+TextLabel_3.Text = "Weapon Shit"
+TextLabel_3.TextColor3 = Color3.fromRGB(208, 219, 255)
+TextLabel_3.TextScaled = true
+TextLabel_3.TextSize = 20.000
+TextLabel_3.TextWrapped = true
+
+UICorner.Parent = main
+
+ModifyMelee.Name = "Modify Melee"
+ModifyMelee.Parent = main
+ModifyMelee.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+ModifyMelee.BorderColor3 = Color3.fromRGB(200, 200, 200)
+ModifyMelee.BorderSizePixel = 2
+ModifyMelee.Position = UDim2.new(0.150000006, 0, 0.53790313, 0)
+ModifyMelee.Size = UDim2.new(0, 111, 0, 29)
+ModifyMelee.Font = Enum.Font.SourceSans
+ModifyMelee.Text = "Modify Melee"
+ModifyMelee.TextColor3 = Color3.fromRGB(255, 255, 255)
+ModifyMelee.TextSize = 16.000
+
+Frame.Parent = main
+Frame.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0, 0, 0.324505329, 0)
+Frame.Size = UDim2.new(0, 160, 0, 9)
+
+Frame_2.Parent = main
+Frame_2.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
+Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(0, 0, 0.632997811, 0)
+Frame_2.Size = UDim2.new(0, 160, 0, 9)
+
+Frame_3.Parent = main
+Frame_3.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
+Frame_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_3.BorderSizePixel = 0
+Frame_3.Position = UDim2.new(0.00625000009, 0, 0.0163967721, 0)
+Frame_3.Size = UDim2.new(0, 159, 0, 9)
+
+Frame_4.Parent = main
+Frame_4.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
+Frame_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_4.BorderSizePixel = 0
+Frame_4.Position = UDim2.new(0.00625000009, 0, 0.958579183, 0)
+Frame_4.Size = UDim2.new(0, 159, 0, 10)
+
+openclose.Name = "openclose"
+openclose.Parent = ShittyGui
+openclose.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+openclose.BorderColor3 = Color3.fromRGB(200, 200, 200)
+openclose.BorderSizePixel = 2
+openclose.Position = UDim2.new(0, 0, 0.74611491, 0)
+openclose.Size = UDim2.new(0, 53, 0, 41)
+openclose.Font = Enum.Font.SourceSans
+openclose.Text = "Toggle"
+openclose.TextColor3 = Color3.fromRGB(255, 255, 255)
+openclose.TextSize = 20.000
+openclose.Active = true
+openclose.Draggable = false
+openclose.MouseButton1Click:Connect(function()
+    main.Visible = not main.Visible
+end)
